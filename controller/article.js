@@ -14,7 +14,8 @@ module.exports = {
   },
 
   post: (req, res) => {
-    const articleInfo = req.body.articleInfo;
+    const articleInfo = req.body;
+    console.log(articleInfo)
     const nowDate = `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`
 
     ArticleModel.create({
