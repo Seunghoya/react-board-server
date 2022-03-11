@@ -35,10 +35,10 @@ module.exports = {
 
   patch: (req, res) => {
     const articleInfo = req.body;
-
+    const { id } = req.params
     ArticleModel.update(articleInfo, {
       where: {
-        id: req.body.id
+        id: id
       }
     })
       .then((data) => {
