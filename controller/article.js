@@ -34,10 +34,37 @@ module.exports = {
   },
 
   patch: (req, res) => {
-    res.status(200).json({ message: '성공'})
+    const articleInfo = req.body;
+
+    ArticleModel.update(articleInfo, {
+      where: {
+        id: req.body.id
+      }
+    })
+      .then((data) => {
+        res.status(200).json({ message: '성공', data: data})
+      })
+      .catch((err) => {
+        res.status(400).json({ message: 'failure', error: err})
+      })
   },
 
   delete: (req, res) => {
-    res.status(200).json({ message: '성공'})
+    console.log(req.params)
+    const { id } = req.params
+    ArticleModel.destroy({
+      where: {
+        id: id
+      }
+    })
+      .then((data) => {
+        if (data === 1) {
+          res.status(200).json({ message: '삭제되었습니다.'})
+        } else res.status(401).json({ message: '해당 게시물이 존재하지 않습니다.'})
+      })
+      .catch((err) => {
+        console.log(err)
+        res.status(401).json({ message: 'failure', error: error });
+      })
   },
 }
