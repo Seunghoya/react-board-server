@@ -22,6 +22,7 @@ module.exports = {
       title: articleInfo.title,
       content: articleInfo.content,
       writer: articleInfo.writer,
+      password: articleInfo.password,
       createdAt: nowDate,
     })
     .then((data) => {
