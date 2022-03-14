@@ -17,6 +17,10 @@ module.exports = {
       writer: {
         type: Sequelize.STRING
       },
+      viewCnt: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0 
+      },
       password: {
         type: Sequelize.STRING
       },

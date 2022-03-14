@@ -34,10 +34,30 @@ module.exports = {
     })
   },
 
-  patch: (req, res) => {
+  put: (req, res) => {
     const articleInfo = req.body;
     const { id } = req.params
     ArticleModel.update(articleInfo, {
+      where: {
+        id: id
+      }
+    })
+      .then((data) => {
+        res.status(200).json({ message: '성공', data: data})
+      })
+      .catch((err) => {
+        res.status(400).json({ message: 'failure', error: err})
+      })
+  },
+
+  patch: async (req, res) => {
+    const { id } = req.params
+    // 조회수 카운트 + 1
+    const viewCnt = await ArticleModel.findOne({
+      where: { id: id }
+    })
+
+    ArticleModel.update({ viewCnt : viewCnt.dataValues.viewCnt + 1}, {
       where: {
         id: id
       }
