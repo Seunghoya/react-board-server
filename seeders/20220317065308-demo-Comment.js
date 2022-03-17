@@ -16,12 +16,12 @@ module.exports = {
       {
         id: 1,
         articleId: 1,
-        name: '',
-        content: '',
+        name: '댓글 테스터',
+        content: '댓글 남김',
         ref_comment: 1,
         password: '',
-        createdAt: '',
-        updatedAt: ''
+        createdAt: new Date(),
+        updatedAt: new Date()
       }
     ])
   },
