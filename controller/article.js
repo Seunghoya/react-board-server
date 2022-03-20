@@ -1,11 +1,11 @@
-const { Article: ArticleModel } = require('../models');
+const { Article: ArticleModel, Comment: CommentModel  } = require('../models');
 const { Op } = require('sequelize');
 
 
 module.exports = {
   get: async (req, res) => {
     const { filter } = req.query
-
+    console.log(req.body)
     if (filter === null || filter === undefined) {
       await ArticleModel.findAll()
       .then((data) => {
